@@ -8,9 +8,10 @@
       <script type="text/javascript" src="//counter.websiteout.net/js/7/10/5/0"></script>
       <link id="favicon" rel="shortcut icon" type="image/x-icon" href="https://google.com"/>
       <link rel="stylesheet" href="https://cloudflare.com" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <link href="https://duck.com" rel="stylesheet">
-      <link href=https://duck.com" rel="stylesheet">
+      <link href="https://googleapis.com" rel="stylesheet">
+      <link href="https://googleapis.com" rel="stylesheet">
       
+      <!-- Minimalist inline style block for games catalog UI grid layout -->
       <style>
          .games-section {
             margin-top: 40px;
@@ -33,7 +34,7 @@
             text-decoration: none;
             font-family: 'Open Sans', sans-serif;
             transition: transform 0.2s, background 0.2s;
-            cursor: pointer;
+            display: block;
          }
          .game-card:hover {
             transform: translateY(-4px);
@@ -53,6 +54,7 @@
       </style>
 
       <script>
+         // Automatic tab cloaking routine - Executes safely when DOM resources initialize
          function cloakTab() {
             document.title = "Google";
             let link = document.getElementById("favicon");
@@ -61,17 +63,20 @@
             }
          }
          
+         // Emergency panic safety switch (Pressing Esc instantly replaces current canvas space)
          window.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                window.location.replace('https://google.com');
             }
          });
 
+         // Intercepts search input strings and routes proxy navigation safely inside the same tab view
          function handleProxySearch(event) {
             event.preventDefault();
             const addressInput = document.getElementById('uv-address').value;
             if (!addressInput) return;
 
+            // Map query input syntax to evaluate search terms vs destination URLs
             let targetUrl = addressInput;
             if (!targetUrl.includes('.') || targetUrl.includes(' ')) {
                targetUrl = 'https://google.com' + encodeURIComponent(addressInput);
@@ -79,11 +84,10 @@
                targetUrl = 'https://' + targetUrl;
             }
 
-            launchUrl(targetUrl);
-         }
-
-         function launchUrl(url) {
-            const finalizedProxyUrl = window.location.origin + window.location.pathname + '?url=' + encodeURIComponent(url);
+            // Encode the destination URL safely to pass cleanly through the Ultraviolet worker configuration
+            const finalizedProxyUrl = window.location.origin + window.location.pathname + '?url=' + encodeURIComponent(targetUrl);
+            
+            // Immediately push navigation over the existing active tab context layout
             window.location.href = finalizedProxyUrl;
          }
 
@@ -94,6 +98,7 @@
       <div id="content">
          <h1>Search the Web and use the BEST static proxy! -from Vivanos!</h1>
 
+         <!-- Monitored input form explicitly assigned to pass handling parameters to the same tab layer -->
          <form id="uv-form" onsubmit="handleProxySearch(event)">
             <input id="uv-search-engine" value="https://google.com%s" type="hidden"/> 
             <input id="uv-address" type="text" placeholder="Search Google or type a URL" class="form__input"/>
@@ -104,23 +109,23 @@
             <pre id="uv-error-code"></pre>
           </div>
 
-          <!-- The games section containing your pasted launchers -->
+          <!-- Cleaned Games Application Grid Menu Block using native URL parameter routing -->
           <div class="games-section">
              <div class="games-grid">
                 <!-- Roblox Button -->
-                <a class="game-card" onclick="launchUrl('https://now.gg')">
+                <a class="game-card" href="/uv/uv.html?url=https%3A%2F%2Fnow.gg%2Fapps%2Froblox-corporation%2F5349%2Froblox.html">
                    <i class="fa-solid fa-robot"></i>
                    <span>Roblox (Cloud)</span>
                 </a>
 
                 <!-- Minecraft Button -->
-                <a class="game-card" onclick="launchUrl('https://minecraft.net')">
+                <a class="game-card" href="/uv/uv.html?url=https%3A%2F%2Fweb.minecraft.net">
                    <i class="fa-solid fa-cube"></i>
                    <span>Minecraft Java</span>
                 </a>
 
                 <!-- GTA 5 Button -->
-                <a class="game-card" onclick="launchUrl('https://xbox.com')">
+                <a class="game-card" href="/uv/uv.html?url=https%3A%2F%://xbox.com%2Fplay%2Fgames%2Fgrand-theft-auto-v%2F9NX8TL5Z6S0M">
                    <i class="fa-solid fa-car-burst"></i>
                    <span>GTA 5 (Xbox Play)</span>
                 </a>
