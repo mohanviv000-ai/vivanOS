@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Google</title>
+      <script src="https://jquery.com"></script>
+      <link rel="stylesheet" href="index.css">
+      <script type="text/javascript" src="//counter.websiteout.net/js/7/10/5/0"></script>
+      <link id="favicon" rel="shortcut icon" type="image/x-icon" href="https://google.com"/>
+      <link rel="stylesheet" href="https://cloudflare.com" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link href="https://googleapis.com" rel="stylesheet">
+      <link href="https://googleapis.com" rel="stylesheet">
+      
+      <!-- Minimalist inline style block for games catalog UI grid layout -->
+      <style>
+         .games-section {
+            margin-top: 40px;
+            padding: 20px;
+         }
+         .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+         }
+         .game-card {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px 10px;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Open Sans', sans-serif;
+            transition: transform 0.2s, background 0.2s;
+            cursor: pointer;
+         }
+         .game-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.2);
+         }
+         .game-card i {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 10px;
+            color: #4285f4;
+         }
+         .game-card span {
+            font-weight: 600;
+            font-size: 0.95rem;
+         }
+      </style>
+
+      <script>
+         // Automatic tab cloaking routine
+         function cloakTab() {
+            document.title = "Google";
+            let link = document.getElementById("favicon");
+            if (link) {
+               link.href = "https://google.com";
+            }
+         }
+         
+         // Emergency panic safety switch (Pressing Esc instantly replaces current canvas space)
+         window.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+               window.location.replace('https://google.com');
+            }
+         });
+
+         // Intercepts input strings and routes proxy navigation safely inside the same tab view
+         function handleProxySearch(event) {
+            event.preventDefault();
+            const addressInput = document.getElementById('uv-address').value;
+            if (!addressInput) return;
+
+            let targetUrl = addressInput;
+            if (!targetUrl.includes('.') || targetUrl.includes(' ')) {
+               targetUrl = 'https://google.com' + encodeURIComponent(addressInput);
+            } else if (!/^https?:\/\//i.test(targetUrl)) {
+               targetUrl = 'https://' + targetUrl;
+            }
+
+            launchUrl(targetUrl);
+         }
+
+         // Universal proxy launch routine matching your Ultraviolet folder path mappings
+         function launchUrl(url) {
+            const finalizedProxyUrl = window.location.origin + window.location.pathname + '?url=' + encodeURIComponent(url);
+            window.location.href = finalizedProxyUrl;
+         }
+
+         window.addEventListener('DOMContentLoaded', cloakTab);
+      </script>
+   </head>
+   <body>
+      <div id="content">
+         <h1>Search the Web and use the BEST static proxy! -from Vivanos!</h1>
+
+         <form id="uv-form" onsubmit="handleProxySearch(event)">
+            <input id="uv-search-engine" value="https://google.com%s" type="hidden"/> 
+            <input id="uv-address" type="text" placeholder="Search Google or type a URL" class="form__input"/>
+          </form>
+          
+          <div class="desc left-margin">
+            <p id="uv-error"></p>
+            <pre id="uv-error-code"></pre>
+          </div>
+
+          <!-- Integrated Games Application Grid Menu Block -->
+          <div class="games-section">
+             <div class="games-grid">
+                <!-- Launches local internal folder directory scripts -->
+                <a class="game-card" onclick="launchUrl(window.location.origin + '/games/snake/index.html')">
+                   <i class="fa-solid fa-gamepad"></i>
+                   <span>Snake Game</span>
+                </a>
+                <a class="game-card" onclick="launchUrl(window.location.origin + '/games/tetris/index.html')">
+                   <i class="fa-solid fa-cubes"></i>
+                   <span>Tetris</span>
+                </a>
+                <!-- Redirects outward safely to cloud repositories via web proxy routing -->
+                <a class="game-card" onclick="launchUrl('https://retrobowlgame.com')">
+                   <i class="fa-solid fa-football"></i>
+                   <span>Retro Bowl</span>
+                </a>
+             </div>
+          </div>
+
+         <br>
+         <a href="https://discord.gg" target="_blank" class="fa-brands fa-discord"></a>
+         <a href="https://github.com/TheTIW/UV-Static" target="_blank" class="fa-brands fa-github"></a>
+         <a href="https://starttiw.org" target="_blank" class="fa-solid fa-cloud"></a>
+      </div>
+      
+      <script src="uv/uv.bundle.js" defer></script>
+      <script src="uv/uv.config.js" defer></script>
+      <script src="register-sw.js" defer></script>
+      <script src="search.js" defer></script>
+      <script src="index.js" defer></script>
+      <script src="error.js" defer></script>
+      <div id="footer">
+         <p>&copy; 2026 Vivanos. All rights reserved.</p>
+      </div>
+   </body>
+</html>
