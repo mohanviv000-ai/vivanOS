@@ -34,6 +34,7 @@
             text-decoration: none;
             font-family: 'Open Sans', sans-serif;
             transition: transform 0.2s, background 0.2s;
+            cursor: pointer;
             display: block;
          }
          .game-card:hover {
@@ -54,7 +55,7 @@
       </style>
 
       <script>
-         // Automatic tab cloaking routine - Executes safely when DOM resources initialize
+         // Automatic tab cloaking routine - Swaps identity parameters safely on window initialization
          function cloakTab() {
             document.title = "Google";
             let link = document.getElementById("favicon");
@@ -63,7 +64,7 @@
             }
          }
          
-         // Emergency panic safety switch (Pressing Esc instantly replaces current canvas space)
+         // Emergency panic safety switch (Pressing Esc instantly replaces current canvas space to hide activity)
          window.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                window.location.replace('https://google.com');
@@ -84,10 +85,12 @@
                targetUrl = 'https://' + targetUrl;
             }
 
-            // Encode the destination URL safely to pass cleanly through the Ultraviolet worker configuration
-            const finalizedProxyUrl = window.location.origin + window.location.pathname + '?url=' + encodeURIComponent(targetUrl);
-            
-            // Immediately push navigation over the existing active tab context layout
+            launchUrl(targetUrl);
+         }
+
+         // Universal proxy launch routine - keeps everything on the same domain folder structure level
+         function launchUrl(url) {
+            const finalizedProxyUrl = window.location.origin + window.location.pathname + '?url=' + encodeURIComponent(url);
             window.location.href = finalizedProxyUrl;
          }
 
@@ -109,23 +112,23 @@
             <pre id="uv-error-code"></pre>
           </div>
 
-          <!-- Cleaned Games Application Grid Menu Block using native URL parameter routing -->
+          <!-- Restored Games Application Grid Menu Block using launchUrl to prevent 404 errors -->
           <div class="games-section">
              <div class="games-grid">
                 <!-- Roblox Button -->
-                <a class="game-card" href="/uv/uv.html?url=https%3A%2F%2Fnow.gg%2Fapps%2Froblox-corporation%2F5349%2Froblox.html">
+                <a class="game-card" onclick="launchUrl('https://now.gg')">
                    <i class="fa-solid fa-robot"></i>
                    <span>Roblox (Cloud)</span>
                 </a>
 
                 <!-- Minecraft Button -->
-                <a class="game-card" href="/uv/uv.html?url=https%3A%2F%2Fweb.minecraft.net">
+                <a class="game-card" onclick="launchUrl('https://minecraft.net')">
                    <i class="fa-solid fa-cube"></i>
                    <span>Minecraft Java</span>
                 </a>
 
                 <!-- GTA 5 Button -->
-                <a class="game-card" href="/uv/uv.html?url=https%3A%2F%://xbox.com%2Fplay%2Fgames%2Fgrand-theft-auto-v%2F9NX8TL5Z6S0M">
+                <a class="game-card" onclick="launchUrl('https://xbox.com')">
                    <i class="fa-solid fa-car-burst"></i>
                    <span>GTA 5 (Xbox Play)</span>
                 </a>
