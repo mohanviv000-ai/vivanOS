@@ -11,7 +11,6 @@
       <link href="https://googleapis.com" rel="stylesheet">
       <link href="https://googleapis.com" rel="stylesheet">
       
-      <!-- Minimalist inline style block for games catalog UI grid layout -->
       <style>
          .games-section {
             margin-top: 40px;
@@ -55,7 +54,7 @@
       </style>
 
       <script>
-         // Automatic tab cloaking routine - Swaps identity parameters safely on window initialization
+         // Automatic tab cloaking routine
          function cloakTab() {
             document.title = "Google";
             let link = document.getElementById("favicon");
@@ -64,20 +63,19 @@
             }
          }
          
-         // Emergency panic safety switch (Pressing Esc instantly replaces current canvas space to hide activity)
+         // Emergency panic switch (Esc redirects immediately to classroom)
          window.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                window.location.replace('https://google.com');
             }
          });
 
-         // Intercepts search input strings and routes proxy navigation safely inside the same tab view
+         // Main logic for your proxy search bar
          function handleProxySearch(event) {
             event.preventDefault();
             const addressInput = document.getElementById('uv-address').value;
             if (!addressInput) return;
 
-            // Map query input syntax to evaluate search terms vs destination URLs
             let targetUrl = addressInput;
             if (!targetUrl.includes('.') || targetUrl.includes(' ')) {
                targetUrl = 'https://google.com' + encodeURIComponent(addressInput);
@@ -85,13 +83,19 @@
                targetUrl = 'https://' + targetUrl;
             }
 
-            launchUrl(targetUrl);
+            launchGameUrl(targetUrl);
          }
 
-         // Universal proxy launch routine - keeps everything on the same domain folder structure level
-         function launchUrl(url) {
-            const finalizedProxyUrl = window.location.origin + window.location.pathname + '?url=' + encodeURIComponent(url);
-            window.location.href = finalizedProxyUrl;
+         // The specialized fix: uses Ultraviolet's internal codec algorithm explicitly
+         function launchGameUrl(url) {
+            if (typeof __uv$config !== 'undefined' && __uv$config.encodeUrl) {
+               // Encodes your string into a proxy-readable path (XOR/Base64 format)
+               const encodedPath = __uv$config.encodeUrl(url);
+               window.location.href = window.location.origin + __uv$config.prefix + encodedPath;
+            } else {
+               // Fallback query parameter string matching your search engine tracking
+               window.location.href = window.location.origin + window.location.pathname + '?url=' + encodeURIComponent(url);
+            }
          }
 
          window.addEventListener('DOMContentLoaded', cloakTab);
@@ -101,7 +105,6 @@
       <div id="content">
          <h1>Search the Web and use the BEST static proxy! -from Vivanos!</h1>
 
-         <!-- Monitored input form explicitly assigned to pass handling parameters to the same tab layer -->
          <form id="uv-form" onsubmit="handleProxySearch(event)">
             <input id="uv-search-engine" value="https://google.com%s" type="hidden"/> 
             <input id="uv-address" type="text" placeholder="Search Google or type a URL" class="form__input"/>
@@ -112,23 +115,23 @@
             <pre id="uv-error-code"></pre>
           </div>
 
-          <!-- Restored Games Application Grid Menu Block using launchUrl to prevent 404 errors -->
+          <!-- Cleaned Games Grid Menu utilizing our specialized internal launcher script -->
           <div class="games-section">
              <div class="games-grid">
                 <!-- Roblox Button -->
-                <a class="game-card" onclick="launchUrl('https://now.gg')">
+                <a class="game-card" onclick="launchGameUrl('https://now.gg')">
                    <i class="fa-solid fa-robot"></i>
                    <span>Roblox (Cloud)</span>
                 </a>
 
                 <!-- Minecraft Button -->
-                <a class="game-card" onclick="launchUrl('https://minecraft.net')">
+                <a class="game-card" onclick="launchGameUrl('https://minecraft.net')">
                    <i class="fa-solid fa-cube"></i>
                    <span>Minecraft Java</span>
                 </a>
 
                 <!-- GTA 5 Button -->
-                <a class="game-card" onclick="launchUrl('https://xbox.com')">
+                <a class="game-card" onclick="launchGameUrl('https://xbox.com')">
                    <i class="fa-solid fa-car-burst"></i>
                    <span>GTA 5 (Xbox Play)</span>
                 </a>
@@ -136,8 +139,8 @@
           </div>
 
          <br>
-         <a href="https://discord.gg" target="_blank" class="fa-brands fa-discord"></a>
-         <a href="https://github.com" target="_blank" class="fa-brands fa-github"></a>
+         <a href="https://discord.gg/zJhPJYJCeJ" target="_blank" class="fa-brands fa-discord"></a>
+         <a href="https://github.com/TheTIW/UV-Static" target="_blank" class="fa-brands fa-github"></a>
          <a href="https://starttiw.org" target="_blank" class="fa-solid fa-cloud"></a>
       </div>
       
