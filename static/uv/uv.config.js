@@ -1,15 +1,14 @@
 self.__uv$config = {
-    prefix: '/static/uv/service/',
-    bare: '/static/uv/bare/',
-    encodeUrl: Ultraviolet.codec.xor.encode,
-    decodeUrl: Ultraviolet.codec.xor.decode,
-    handler: '/static/uv/uv.handler.js',
-    bundle: '/static/uv/uv.bundle.js',
-    config: '/static/uv/uv.config.js',
-    sw: '/static/uv/uv.sw.js',
-    /**
-     * Public Wisp fallback router for Vercel deployments.
-     * Note: Change this trail link if a school firewall blocks the endpoint.
-     */
-    wisp: "wss://wisp.mercurynetwork.org/",
+    prefix: '/uv/',
+    bare: [
+        'https://tomp.app',
+        'https://radon.games',
+        'https://p7.de'
+    ],
+    encodeUrl: Ultrawave.codec.xor.encode,
+    decodeUrl: Ultrawave.codec.xor.decode,
+    handler: '/uv/uv.handler.js',
+    bundle: '/uv/uv.bundle.js',
+    config: '/uv/uv.config.js',
+    sw: '/uv/uv.sw.js'
 };
