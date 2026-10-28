@@ -1,51 +1,139 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-    />
-    <title>Ultraviolet | Error</title>
-    <meta
-      name="description"
-      content="Ultraviolet is a highly sophisticated proxy used for evading internet censorship or accessing websites in a controlled sandbox using the power of service-workers. Unblock sites today!"
-    />
-    <meta
-      name="theme-color"
-      media="(prefers-color-scheme: dark)"
-      content="#434c5e"
-    />
-    <meta name="googlebot" content="noindex, nofollow, nosnippet" />
-    <base href="/" />
-    <link rel="shortcut icon" content="favicon.ico" />
-    <link rel="stylesheet" href="index.css" />
-  </head>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Google</title>
+      <script src="https://jquery.com"></script>
+      <link rel="stylesheet" href="index.css">
+      <script type="text/javascript" src="//counter.websiteout.net/js/7/10/5/0"></script>
+      <link id="favicon" rel="shortcut icon" type="image/x-icon" href="https://google.com"/>
+      <link rel="stylesheet" href="https://cloudflare.com" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link href="https://googleapis.com" rel="stylesheet">
+      <link href="https://googleapis.com" rel="stylesheet">
+      
+      <style>
+         .games-section {
+            margin-top: 40px;
+            padding: 20px;
+         }
+         .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+         }
+         .game-card {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px 10px;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Open Sans', sans-serif;
+            transition: transform 0.2s, background 0.2s;
+            cursor: pointer;
+            display: block;
+         }
+         .game-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.2);
+         }
+         .game-card i {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 10px;
+            color: #4285f4;
+         }
+         .game-card span {
+            font-weight: 600;
+            font-size: 0.95rem;
+         }
+      </style>
 
-  <body>
-    <div class="logo-wrapper left-margin">
-      <h1>Ultraviolet | Error</h1>
-    </div>
-    <div class="desc left-margin">
-      <p>The server could not route your request.</p>
-      <p id="uv-error"></p>
-      <code id="uv-error-code"></code>
-      <button id="uv-register-sw" value="Register service worker">
-        Register ServiceWorker
-      </button>
-    </div>
-    <footer>
-      <a
-        title="License information"
-        href="credits.html"
-        style="margin-left: auto"
-        >Credits</a
-      >
-      <span>Ultraviolet &copy; TN 2022</span>
-    </footer>
-    <script src="uv/uv.bundle.js"></script>
-    <script src="uv/uv.config.js"></script>
-    <script src="register-sw.js"></script>
-    <script src="error.js"></script>
-  </body>
+      <script>
+         function cloakTab() {
+            document.title = "Google";
+            let link = document.getElementById("favicon");
+            if (link) {
+               link.href = "https://google.com";
+            }
+         }
+         
+         window.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+               window.location.replace('https://google.com');
+            }
+         });
+
+         // Natively injects URL configurations into the central input node to prevent script collisions
+         function triggerProxyLaunch(targetUrl) {
+            const addressInput = document.getElementById('uv-address');
+            const searchForm = document.getElementById('uv-form');
+            if (addressInput && searchForm) {
+               addressInput.value = targetUrl;
+               
+               // Dispatch standard processing submission hooks matching search.js assets
+               const event = new Event('submit', { bubbles: true, cancelable: true });
+               searchForm.dispatchEvent(event);
+            }
+         }
+
+         window.addEventListener('DOMContentLoaded', cloakTab);
+      </script>
+   </head>
+   <body>
+      <div id="content">
+         <h1>Search the Web and use the BEST static proxy! -from Vivanos!</h1>
+
+         <form id="uv-form">
+            <input id="uv-search-engine" value="https://google.com" type="hidden"/> 
+            <input id="uv-address" type="text" placeholder="Search Google or type a URL" class="form__input"/>
+          </form>
+          
+          <div class="desc left-margin">
+            <p id="uv-error"></p>
+            <pre id="uv-error-code"></pre>
+          </div>
+
+          <div class="games-section">
+             <div class="games-grid">
+                <!-- Roblox Card -->
+                <div class="game-card" onclick="triggerProxyLaunch('https://now.gg')">
+                   <i class="fa-solid fa-robot"></i>
+                   <span>Roblox (Cloud)</span>
+                </div>
+
+                <!-- Minecraft Card -->
+                <div class="game-card" onclick="triggerProxyLaunch('https://minecraft.net')">
+                   <i class="fa-solid fa-cube"></i>
+                   <span>Minecraft Java</span>
+                </div>
+
+                <!-- GTA 5 Card -->
+                <div class="game-card" onclick="triggerProxyLaunch('https://xbox.com')">
+                   <i class="fa-solid fa-car-burst"></i>
+                   <span>GTA 5 (Xbox Play)</span>
+                </div>
+             </div>
+          </div>
+
+         <br>
+         <a href="https://discord.gg" target="_blank" class="fa-brands fa-discord"></a>
+         <a href="https://github.com" target="_blank" class="fa-brands fa-github"></a>
+         <a href="https://starttiw.org" target="_blank" class="fa-solid fa-cloud"></a>
+      </div>
+      
+      <script src="uv/uv.bundle.js" defer></script>
+      <script src="uv/uv.config.js" defer></script>
+      <script src="register-sw.js" defer></script>
+      <script src="search.js" defer></script>
+      <script src="index.js" defer></script>
+      <script src="error.js" defer></script>
+      <div id="footer">
+         <p>&copy; 2026 Vivanos. All rights reserved.</p>
+      </div>
+   </body>
 </html>
