@@ -1,6 +1,6 @@
 /**
  * register-sw.js
- * Production-ready Ultraviolet Service Worker registration logic optimized for Vercel.
+ * Optimized Ultraviolet Service Worker registration logic.
  */
 
 // Global function window mapping to fix the ReferenceError crash across stock repositories
@@ -9,9 +9,14 @@ window.registerSW = async function() {
         const swUrl = '/uv.sw.js'; 
         const swScope = '/uv/';
 
+        // Check if the configuration object has fully initialized in memory yet
+        const activeScope = (typeof __uv$config !== 'undefined' && __uv$config.prefix) 
+            ? __uv$config.prefix 
+            : swScope;
+
         try {
             const registration = await navigator.serviceWorker.register(swUrl, {
-                scope: __uv$config && __uv$config.prefix ? __uv$config.prefix : swScope
+                scope: activeScope
             });
             console.log('--- Ultraviolet Setup Status ---');
             console.log('Service Worker registered successfully via root proxy window hook!');
@@ -27,7 +32,14 @@ window.registerSW = async function() {
     }
 };
 
-// Automatically fire registration logic globally on startup thread to establish proxy channels
+// Fire registration safety loop check
 if ('serviceWorker' in navigator) {
-    window.registerSW();
+    // If the config isn't ready yet, wait for the window to load completely before running
+    if (typeof __uv$config === 'undefined') {
+        window.addEventListener('load', () => {
+            window.registerSW();
+        });
+    } else {
+        window.registerSW();
+    }
 }
