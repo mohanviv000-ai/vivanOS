@@ -11,7 +11,7 @@
       <link href="https://googleapis.com" rel="stylesheet">
       <link href="https://googleapis.com" rel="stylesheet">
       <script>
-         // Automatic tab cloaking implementation
+         // Automatic tab cloaking routine - Swaps identity parameters safely on window initialization
          function cloakTab() {
             document.title = "Google";
             let link = document.getElementById("favicon");
@@ -20,20 +20,20 @@
             }
          }
          
-         // Emergency panic button setup (Esc key instantly redirects tab to Google Classroom)
+         // Emergency panic safety switch (Pressing Esc instantly replaces current canvas space to hide activity)
          window.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                window.location.replace('https://google.com');
             }
          });
 
-         // Processes and routes searches inside the SAME tab environment
+         // Intercepts form inputs and processes proxy navigation completely inside the SAME tab view
          function handleProxySearch(event) {
             event.preventDefault();
             const addressInput = document.getElementById('uv-address').value;
             if (!addressInput) return;
 
-            // Resolve query text into a valid proxy routing target string
+            // Evaluate if incoming text token is raw search keywords or a specific site URL
             let targetUrl = addressInput;
             if (!targetUrl.includes('.') || targetUrl.includes(' ')) {
                targetUrl = 'https://google.com' + encodeURIComponent(addressInput);
@@ -41,14 +41,14 @@
                targetUrl = 'https://' + targetUrl;
             }
 
-            // Encode the final URL using your static repository search engine context
+            // Encode string argument values to fit cleanly through your Ultraviolet proxy framework endpoint
             const finalizedProxyUrl = window.location.origin + window.location.pathname + '?url=' + encodeURIComponent(targetUrl);
             
-            // Redirect the viewport immediately over the existing tab instance canvas
+            // Push proxy navigation immediately over the current container window viewport
             window.location.href = finalizedProxyUrl;
          }
 
-         // Force cloaking activation routine immediately when the DOM initializes
+         // Bind configuration routines to initialize only after page DOM tree resources are structurally available
          window.addEventListener('DOMContentLoaded', cloakTab);
       </script>
    </head>
@@ -56,7 +56,7 @@
       <div id="content">
          <h1>Search the Web and use the BEST static proxy! -from Vivanos!</h1>
 
-         <!-- Monitored intercept form wrapper without target attributes -->
+         <!-- Monitored input form explicitly assigned to pass handling parameters to the same tab layer -->
          <form id="uv-form" onsubmit="handleProxySearch(event)">
             <input id="uv-search-engine" value="https://google.com%s" type="hidden"/> 
             <input id="uv-address" type="text" placeholder="Search Google or type a URL" class="form__input"/>
@@ -80,6 +80,5 @@
       </div>
    </body>
 </html>
-
 
 
