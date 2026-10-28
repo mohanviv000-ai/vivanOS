@@ -70,31 +70,16 @@
             }
          });
 
-         // Main logic for your proxy search bar
-         function handleProxySearch(event) {
-            event.preventDefault();
-            const addressInput = document.getElementById('uv-address').value;
-            if (!addressInput) return;
-
-            let targetUrl = addressInput;
-            if (!targetUrl.includes('.') || targetUrl.includes(' ')) {
-               targetUrl = 'https://google.com' + encodeURIComponent(addressInput);
-            } else if (!/^https?:\/\//i.test(targetUrl)) {
-               targetUrl = 'https://' + targetUrl;
-            }
-
-            launchGameUrl(targetUrl);
-         }
-
-         // The specialized fix: uses Ultraviolet's internal codec algorithm explicitly
-         function launchGameUrl(url) {
-            if (typeof __uv$config !== 'undefined' && __uv$config.encodeUrl) {
-               // Encodes your string into a proxy-readable path (XOR/Base64 format)
-               const encodedPath = __uv$config.encodeUrl(url);
-               window.location.href = window.location.origin + __uv$config.prefix + encodedPath;
-            } else {
-               // Fallback query parameter string matching your search engine tracking
-               window.location.href = window.location.origin + window.location.pathname + '?url=' + encodeURIComponent(url);
+         // Injects target URL directly into the active proxy form submission engine
+         function triggerProxyLaunch(targetUrl) {
+            const addressInput = document.getElementById('uv-address');
+            const searchForm = document.getElementById('uv-form');
+            if (addressInput && searchForm) {
+               addressInput.value = targetUrl;
+               
+               // Simulates an official form submission event natively to prevent script blocks
+               const event = new Event('submit', { bubbles: true, cancelable: true });
+               searchForm.dispatchEvent(event);
             }
          }
 
@@ -105,8 +90,9 @@
       <div id="content">
          <h1>Search the Web and use the BEST static proxy! -from Vivanos!</h1>
 
-         <form id="uv-form" onsubmit="handleProxySearch(event)">
-            <input id="uv-search-engine" value="https://google.com%s" type="hidden"/> 
+         <!-- Main processing form framework tied to search.js and index.js natively -->
+         <form id="uv-form">
+            <input id="uv-search-engine" value="https://google.com" type="hidden"/> 
             <input id="uv-address" type="text" placeholder="Search Google or type a URL" class="form__input"/>
           </form>
           
@@ -115,26 +101,26 @@
             <pre id="uv-error-code"></pre>
           </div>
 
-          <!-- Cleaned Games Grid Menu utilizing our specialized internal launcher script -->
+          <!-- Safe Games Application Grid - Simulates native query search forms -->
           <div class="games-section">
              <div class="games-grid">
                 <!-- Roblox Button -->
-                <a class="game-card" onclick="launchGameUrl('https://now.gg')">
+                <div class="game-card" onclick="triggerProxyLaunch('https://now.gg')">
                    <i class="fa-solid fa-robot"></i>
                    <span>Roblox (Cloud)</span>
-                </a>
+                </div>
 
                 <!-- Minecraft Button -->
-                <a class="game-card" onclick="launchGameUrl('https://minecraft.net')">
+                <div class="game-card" onclick="triggerProxyLaunch('https://minecraft.net')">
                    <i class="fa-solid fa-cube"></i>
                    <span>Minecraft Java</span>
-                </a>
+                </div>
 
                 <!-- GTA 5 Button -->
-                <a class="game-card" onclick="launchGameUrl('https://xbox.com')">
+                <div class="game-card" onclick="triggerProxyLaunch('https://xbox.com')">
                    <i class="fa-solid fa-car-burst"></i>
                    <span>GTA 5 (Xbox Play)</span>
-                </a>
+                </div>
              </div>
           </div>
 
