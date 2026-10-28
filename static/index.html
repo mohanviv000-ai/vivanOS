@@ -11,6 +11,7 @@
       <link href="https://googleapis.com" rel="stylesheet">
       <link href="https://googleapis.com" rel="stylesheet">
       
+      <!-- Minimalist inline style block for games catalog UI grid layout -->
       <style>
          .games-section {
             margin-top: 40px;
@@ -54,6 +55,7 @@
       </style>
 
       <script>
+         // Automatic tab cloaking routine - Swaps identity parameters safely on window initialization
          function cloakTab() {
             document.title = "Google";
             let link = document.getElementById("favicon");
@@ -62,20 +64,21 @@
             }
          }
          
+         // Emergency panic safety switch (Pressing Esc instantly replaces current canvas space to hide activity)
          window.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                window.location.replace('https://google.com');
             }
          });
 
-         // Natively injects URL configurations into the central input node to prevent script collisions
+         // Injects target URLs directly into the active proxy form submission engine smoothly
          function triggerProxyLaunch(targetUrl) {
             const addressInput = document.getElementById('uv-address');
             const searchForm = document.getElementById('uv-form');
             if (addressInput && searchForm) {
                addressInput.value = targetUrl;
                
-               // Dispatch standard processing submission hooks matching search.js assets
+               // Dispatch standard processing submission hooks matching search.js assets natively
                const event = new Event('submit', { bubbles: true, cancelable: true });
                searchForm.dispatchEvent(event);
             }
@@ -88,6 +91,7 @@
       <div id="content">
          <h1>Search the Web and use the BEST static proxy! -from Vivanos!</h1>
 
+         <!-- Monitored input form explicitly assigned to match your repository architecture handlers -->
          <form id="uv-form">
             <input id="uv-search-engine" value="https://google.com" type="hidden"/> 
             <input id="uv-address" type="text" placeholder="Search Google or type a URL" class="form__input"/>
@@ -98,6 +102,7 @@
             <pre id="uv-error-code"></pre>
           </div>
 
+          <!-- Safe Games Application Grid Menu - Emulates native text queries to avoid script conflicts -->
           <div class="games-section">
              <div class="games-grid">
                 <!-- Roblox Card -->
@@ -126,8 +131,9 @@
          <a href="https://starttiw.org" target="_blank" class="fa-solid fa-cloud"></a>
       </div>
       
+      <!-- Fixed Synchronous Script Loading Sequence - Ensures configuration handles load first -->
       <script src="uv/uv.bundle.js" defer></script>
-      <script src="uv/uv.config.js" defer></script>
+      <script src="uv/uv.config.js"></script> <!-- Removed defer to prevent structural timing failures -->
       <script src="register-sw.js" defer></script>
       <script src="search.js" defer></script>
       <script src="index.js" defer></script>
