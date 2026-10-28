@@ -3,15 +3,15 @@
    <head>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Google</title>
-      <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="https://jquery.com"></script>
       <link rel="stylesheet" href="index.css">
       <script type="text/javascript" src="//counter.websiteout.net/js/7/10/5/0"></script>
       <link id="favicon" rel="shortcut icon" type="image/x-icon" href="https://google.com"/>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cloudflare.com" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link href="https://googleapis.com" rel="stylesheet">
+      <link href="https://googleapis.com" rel="stylesheet">
       <script>
-         // Dynamic tab cloaking implementation
+         // Automatic tab cloaking implementation
          function cloakTab() {
             document.title = "Google";
             let link = document.getElementById("favicon");
@@ -20,62 +20,35 @@
             }
          }
          
-         // Emergency panic button setup (Esc key redirects to Google Classroom)
+         // Emergency panic button setup (Esc key instantly redirects tab to Google Classroom)
          window.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
-               window.location.replace('https://classroom.google.com');
+               window.location.replace('https://google.com');
             }
          });
 
-         // history obfuscation execution via about:blank framework
-         function launchStealthFrame(event) {
+         // Processes and routes searches inside the SAME tab environment
+         function handleProxySearch(event) {
             event.preventDefault();
             const addressInput = document.getElementById('uv-address').value;
             if (!addressInput) return;
 
-            // Resolve target URL construction using proxy search engine syntax
+            // Resolve query text into a valid proxy routing target string
             let targetUrl = addressInput;
             if (!targetUrl.includes('.') || targetUrl.includes(' ')) {
-               targetUrl = 'https://www.google.com/search?q=' + encodeURIComponent(addressInput);
+               targetUrl = 'https://google.com' + encodeURIComponent(addressInput);
             } else if (!/^https?:\/\//i.test(targetUrl)) {
                targetUrl = 'https://' + targetUrl;
             }
 
-            const win = window.open('about:blank', '_blank');
-            if (!win) {
-               alert("Pop-up blocked! Please allow pop-ups for stealth cloaking execution.");
-               return;
-            }
-
-            const doc = win.document;
-            doc.title = "Google Drive";
+            // Encode the final URL using your static repository search engine context
+            const finalizedProxyUrl = window.location.origin + window.location.pathname + '?url=' + encodeURIComponent(targetUrl);
             
-            // Set dynamic icon configuration for parent container window frame
-            let link = doc.createElement('link');
-            link.rel = 'icon';
-            link.href = 'https://gstatic.com';
-            doc.head.appendChild(link);
-
-            doc.body.style.margin = '0';
-            doc.body.style.height = '100vh';
-            doc.body.style.overflow = 'hidden';
-
-            // Construct sandboxed layout layer injection targeting proxy configuration context
-            const iframe = doc.createElement('iframe');
-            // Ground context reference pointers relative to local root location
-            iframe.src = window.location.origin + window.location.pathname + '?url=' + encodeURIComponent(targetUrl);
-            iframe.style.border = 'none';
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.style.margin = '0';
-
-            doc.body.appendChild(iframe);
-            
-            // Instantly replace parent canvas layer to redirect structural audit footprints
-            window.location.replace('https://classroom.google.com');
+            // Redirect the viewport immediately over the existing tab instance canvas
+            window.location.href = finalizedProxyUrl;
          }
 
-         // Automatically run the basic tab cloak when the document object initializes
+         // Force cloaking activation routine immediately when the DOM initializes
          window.addEventListener('DOMContentLoaded', cloakTab);
       </script>
    </head>
@@ -83,17 +56,17 @@
       <div id="content">
          <h1>Search the Web and use the BEST static proxy! -from Vivanos!</h1>
 
-         <!-- Updated form element execution flow to intercept standard inputs -->
-         <form id="uv-form" onsubmit="launchStealthFrame(event)">
-            <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/> 
+         <!-- Monitored intercept form wrapper without target attributes -->
+         <form id="uv-form" onsubmit="handleProxySearch(event)">
+            <input id="uv-search-engine" value="https://google.com%s" type="hidden"/> 
             <input id="uv-address" type="text" placeholder="Search Google or type a URL" class="form__input"/>
           </form>
           <div class="desc left-margin">
             <p id="uv-error"></p>
             <pre id="uv-error-code"></pre>
           </div>
-         <a href="https://discord.gg/zJhPJYJCeJ" target="_blank" class="fa-brands fa-discord"></a>
-         <a href="https://github.com/TheTIW/UV-Static" target="_blank" class="fa-brands fa-github"></a>
+         <a href="https://discord.gg" target="_blank" class="fa-brands fa-discord"></a>
+         <a href="https://github.com" target="_blank" class="fa-brands fa-github"></a>
          <a href="https://starttiw.org" target="_blank" class="fa-solid fa-cloud"></a>
       </div>
       <script src="uv/uv.bundle.js" defer></script>
@@ -107,5 +80,6 @@
       </div>
    </body>
 </html>
+
 
 
