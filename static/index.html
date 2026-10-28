@@ -54,7 +54,6 @@
       </style>
 
       <script>
-         // Automatic tab cloaking routine
          function cloakTab() {
             document.title = "Google";
             let link = document.getElementById("favicon");
@@ -63,21 +62,20 @@
             }
          }
          
-         // Emergency panic switch (Esc redirects immediately to classroom)
          window.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                window.location.replace('https://google.com');
             }
          });
 
-         // Injects target URL directly into the active proxy form submission engine
+         // Natively injects URL configurations into the central input node to prevent script collisions
          function triggerProxyLaunch(targetUrl) {
             const addressInput = document.getElementById('uv-address');
             const searchForm = document.getElementById('uv-form');
             if (addressInput && searchForm) {
                addressInput.value = targetUrl;
                
-               // Simulates an official form submission event natively to prevent script blocks
+               // Dispatch standard processing submission hooks matching search.js assets
                const event = new Event('submit', { bubbles: true, cancelable: true });
                searchForm.dispatchEvent(event);
             }
@@ -90,7 +88,6 @@
       <div id="content">
          <h1>Search the Web and use the BEST static proxy! -from Vivanos!</h1>
 
-         <!-- Main processing form framework tied to search.js and index.js natively -->
          <form id="uv-form">
             <input id="uv-search-engine" value="https://google.com" type="hidden"/> 
             <input id="uv-address" type="text" placeholder="Search Google or type a URL" class="form__input"/>
@@ -101,22 +98,21 @@
             <pre id="uv-error-code"></pre>
           </div>
 
-          <!-- Safe Games Application Grid - Simulates native query search forms -->
           <div class="games-section">
              <div class="games-grid">
-                <!-- Roblox Button -->
+                <!-- Roblox Card -->
                 <div class="game-card" onclick="triggerProxyLaunch('https://now.gg')">
                    <i class="fa-solid fa-robot"></i>
                    <span>Roblox (Cloud)</span>
                 </div>
 
-                <!-- Minecraft Button -->
+                <!-- Minecraft Card -->
                 <div class="game-card" onclick="triggerProxyLaunch('https://minecraft.net')">
                    <i class="fa-solid fa-cube"></i>
                    <span>Minecraft Java</span>
                 </div>
 
-                <!-- GTA 5 Button -->
+                <!-- GTA 5 Card -->
                 <div class="game-card" onclick="triggerProxyLaunch('https://xbox.com')">
                    <i class="fa-solid fa-car-burst"></i>
                    <span>GTA 5 (Xbox Play)</span>
@@ -125,8 +121,8 @@
           </div>
 
          <br>
-         <a href="https://discord.gg/zJhPJYJCeJ" target="_blank" class="fa-brands fa-discord"></a>
-         <a href="https://github.com/TheTIW/UV-Static" target="_blank" class="fa-brands fa-github"></a>
+         <a href="https://discord.gg" target="_blank" class="fa-brands fa-discord"></a>
+         <a href="https://github.com" target="_blank" class="fa-brands fa-github"></a>
          <a href="https://starttiw.org" target="_blank" class="fa-solid fa-cloud"></a>
       </div>
       
